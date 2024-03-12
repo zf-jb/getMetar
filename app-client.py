@@ -74,7 +74,6 @@ else:
 
 # bundle the request in json format
 request = create_request(action, value1, value2)
-print(request)
 # send the request
 start_connection(host, port, request)
 

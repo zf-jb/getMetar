@@ -41,11 +41,9 @@ class Message:
     def _read(self):
         try:
             # Should be ready to read
-            print(self.sock.recv(4096))
             data = self.sock.recv(4096)
         except BlockingIOError:
             # Resource temporarily unavailable (errno EWOULDBLOCK)
-            print("BlockingIOError")
             pass
         else:
             if data:
@@ -128,10 +126,6 @@ class Message:
 
     def read(self):
         self._read()
-
-        print(self._jsonheader_len)
-        print(self.jsonheader)
-        print(self.request)
 
         if self._jsonheader_len is None:
             self.process_protoheader()
@@ -255,4 +249,3 @@ class Message:
         else:
             print(response.status_code)
             return None
-
